@@ -13,6 +13,7 @@ const write = async () => {
 
   output.write("Use Ctrl + C to stop stdin\n");
   output.write("Enter some text:\n");
+
   input.on("data", (chunk) => {
     const data = chunk.toString();
     fileStream.write(data);
