@@ -1,4 +1,4 @@
-import { open, stat, mkdir, readdir, copyFile } from "node:fs/promises";
+import { stat, mkdir, readdir, copyFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
