@@ -14,7 +14,7 @@ let unknownObject;
 if (random > 0.5) {
   unknownObject = await import("./files/a.json", { with: { type: "json" } });
 } else {
-  unknownObject = await import("./files/a.json", { with: { type: "json" } });
+  unknownObject = await import("./files/b.json", { with: { type: "json" } });
 }
 
 console.log(`Release ${release()}`);
@@ -25,7 +25,7 @@ console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);
 
 const myServer = createServer((_, res) => {
-  res.end("Request accepted 2");
+  res.end("Request accepted");
 });
 
 const PORT = 3000;
