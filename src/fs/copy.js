@@ -1,4 +1,4 @@
-import { open, stat } from "node:fs/promises";
+import { open, stat, mkdir, readdir, copyFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -10,8 +10,15 @@ const copy = async () => {
     const dirPathD = join(__dirname, "files_copy");
 
     await stat(dirPathS);
+    await mkdir(dirPathD);
+
+    const fileList = await readdir(dirPathS);
+
+    for (let i = 0; i < fileList.length; i++) {
+      const fileName = fileList[i];
+      await copyFile(join(dirPathS, fileName), join(dirPathD, fileName));
+    }
   } catch (error) {
-    // console.log(error);
     if (error.code == "EEXIST" || error.code == "ENOENT") {
       throw Error("FS operation failed");
     }
